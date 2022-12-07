@@ -1,0 +1,29 @@
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+li {
+  padding: 15px;
+}
+
+.odd {
+  background-color: #ECF0F1;
+}
+
+.over {
+  background-color: #BDC3C7;
+}
+
+.app-toolbar {
+    position: sticky;
+    position: -webkit-sticky;
+}
+
+::ng-deep .mat-card-header {
+  padding: 15px;
+}
+
+mat-card > .over {
+  background-color: #FFCCBC;
+}

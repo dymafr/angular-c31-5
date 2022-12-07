@@ -1,0 +1,23 @@
+<mat-toolbar class='app-toolbar' color="primary" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+	<span fxFlex="auto">To-do List</span>
+	<mat-form-field floatLabel="never">
+		<input (keydown.enter)="addList()" [(ngModel)]="listLabel" matInput placeholder="list name" type="text">
+	</mat-form-field>
+	<button mat-raised-button color="accent" (click)="addList()">Add list</button>
+</mat-toolbar>
+<div class="p-15" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="15px">
+	<mat-card *ngFor="let list of lists; let listIndex = index;">
+		<mat-card-header appDrag [listIndex]="listIndex"  (transfer)="transferItem($event)"  fxLayoutAlign="center center">{{list.label}}</mat-card-header>
+		<mat-card-content>
+			<ul>
+				<li (switch)="switchItems($event)" appDrag [listIndex]="listIndex" [itemIndex]="itemIndex" [class.odd]="odd" *ngFor="let item of list.items; let odd = odd; let itemIndex = index;">{{item.content}}</li>
+			</ul>
+		</mat-card-content>
+		<mat-card-actions fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+			<mat-form-field floatLabel="never">
+				<input (keydown.enter)="addItem(list)" [(ngModel)]="itemContent" matInput placeholder="item name" type="text">
+			</mat-form-field>
+			<button mat-raised-button color="accent" (click)="addItem(list)">Add list</button>
+		</mat-card-actions>
+	</mat-card>
+</div>
